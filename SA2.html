@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- template:  
+			https://bbbootstrap.com/snippets/awesome-search-bar-hover-17080978
+			https://freefrontend.com/bootstrap-search-boxes/ 
+
+		box-shadow:
+			https://www.w3schools.com/css/tryit.asp?filename=trycss3_box-shadowù
+			https://www.w3schools.com/css/tryit.asp?filename=trycss3_box-shadow9
+		 
+		animation:
+		 	https://www.w3schools.com/css/css3_animations.asp
+			https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_animate_3
+			https://www.w3schools.com/jsref/prop_element_clientwidth.asp
+			https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
+			https://www.w3schools.com/howto/howto_js_remove_class.asp
+
+		timout:
+			https://www.w3schools.com/jsref/met_win_settimeout.asp
+			http://jsfiddle.net/kA8G8/7/
+	-->
+
+	<title>Stupidit&agrave; Artificiale</title>
+	<meta charset="UTF-8">
+
+	<!-- Link al file CSS di Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="faviAS/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="faviAS/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="faviAS/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="faviAS/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="faviAS/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="faviAS/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="faviAS/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="faviAS/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="faviAS/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="faviAS/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="faviAS/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="faviAS/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="faviAS/favicon-16x16.png">
+    <link rel="manifest" href="faviAS/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="faviAS/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+	
+	<style type="text/css">
+		body{
+			background-image: linear-gradient(to right top,#300e94,#1c0030);
+			height: 100vh;
+		}
+		input[type=text] {
+			color:#1b147f;
+			border-radius: 40px;
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border: none;
+		}
+		input[type=button] {
+			background-color: #490867;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			position: relative;
+			align-items: center;
+			justify-content: center;
+		}
+		input[type=button]:hover { /*unused*/
+			background-color: #96c1e0;
+		}
+		body{
+			background-color: #240450;
+		}
+		h1, h4, h5, h6{
+			color: whitesmoke;
+			text-align: center;
+		}
+		.search_icon{
+			height: 50px;
+			width: 50px;
+			float: right;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 50%;
+			color:white;
+            background: rgb(13, 0, 80);
+		}  
+		.search_icon:hover{
+			/* background: rgb(13, 0, 80); */
+			color: #fff;
+		}
+        a:link{
+            text-decoration:none;
+        }   
+		.search{
+            height: 70px;
+            background-color: #fff;
+            border-radius: 40px;
+            padding: 10px;
+        }
+		@keyframes glow {
+			0% {box-shadow: none;}
+			50% {box-shadow: 3px 3px 10px whitesmoke, -3px -3px 10px whitesmoke, -3px 3px 10px whitesmoke, 3px -3px 10px whitesmoke;}
+			100% {box-shadow: 1px 1px 10px whitesmoke, -1px -1px 10px whitesmoke, -1px 1px 10px whitesmoke, 1px -1px 10px whitesmoke;}
+		}
+		.search:hover{
+			animation-name: glow;
+  			animation-duration: 2s;
+			animation-iteration-count: infinite;
+			animation-direction: alternate;
+		}
+		.glowAllTheTime{
+			animation-name: glow;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+			animation-direction: alternate;
+		}
+        .search_input{
+            color: white;
+            border: 0;
+            outline: 0;
+            background: none;
+            width: 0;
+            margin-top:5px;
+            caret-color:transparent;
+            line-height: 30px;
+            transition: width 0.4s linear;
+        }
+        .search .search_input{
+            padding: 0 10px;
+            width: 550px;
+            caret-color:red;
+            transition: width 0.4s linear;
+        }		
+        #loading, #ans{
+			color: whitesmoke;
+			font-size: 100%;
+			/* text-align: center; */
+            /* display: flex; */
+			justify-content: center;
+			/* align-items: center; */
+            margin-top: 5%;
+			position: absolute;
+		}
+        #ans{
+            font-size: 150%;
+            /* background-color: #96c1e0; */
+            /* border-radius: 30px; */
+            /* padding: 5px; */
+            margin-top:8%;
+            margin-left: -4%;            
+        }
+
+        
+	</style>
+</head>
+<body>
+	<br><br><br><br><br><br><br><br><br>
+	<!-- Contenuto della pagina -->
+    <h4>il primo motore di ricerca a</h4>
+	<h1 style="font-size: 400%;"><b>Stupidit&agrave; Artificiale</b></h1>
+    <br>
+
+
+	<div class=""> <!-- class='container h-100' -->
+		<div class="d-flex justify-content-center h-100" >
+			<div class="search" id="searchbar">
+			<input class="search_input" type="text" name="" placeholder="Cerca una cosa, qualsiasi cosa, ma non troppo difficile eh">
+			<a href="#" class="search_icon" type="button" id="key" value="Prova a cercare" onclick="engine()">
+				<i class="fa fa-search" ></i>
+			</a>
+			</div>
+		</div>
+	</div>
+	<b>
+		<h2 id="loading">
+			<span id="toMove1"></span>
+            <br>
+			<span id="toMove2"></span>
+            <br>
+			<span id="toMove3"></span>
+		</h2>
+	</b>
+    <br><br><br><br><br><br>
+	<b><h1 id="ans"></h1></b>
+
+  
+	<!-- Link al file JavaScript di Bootstrap -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script>
+
+		//######################################################### answere animation
+		var id = null;
+		function move(idToMove) {
+			var elem = document.getElementById(idToMove); //prendo l'elemento che voglio muovere
+			//console.log(elem);
+			var testDiv = document.getElementById("searchbar"); //prendo la posizione della barra di ricerca come riferimento
+			var posLeft = testDiv.offsetLeft; 
+			var pos = testDiv.offsetTop;
+
+			//aggiusto le posizioni di un paio di altri elementi
+			elem.style.left = posLeft + 50 + 'px'; 
+			var ansPos = document.getElementById("ans");
+			ansPos.style.left = posLeft + 50 + 'px';
+			ansPos.style.top = pos + (pos*30)/100 + 'px';
+			document.getElementById("loading").style.left = posLeft + 50 + 'px';
+
+
+			//setto la posizione finale
+			let maxH = pos + (pos*5)/100 //maxH = pos + 25%pos		//x : pos = 25 : 100 
+
+
+
+			clearInterval(id);
+			id = setInterval(frame, 10);
+			function frame() {
+				if (pos == Math.floor(maxH)) {
+					clearInterval(id);
+				} else {
+					pos++; 
+					elem.style.top = pos + 'px'; 
+				}
+			}
+		}
+		
+		//######################################################### searching engine
+		// Execute a function when the user presses a key on the keyboard
+		document.getElementById("searchbar").addEventListener("keypress", function(event) {
+		// If the user presses the "Enter" key on the keyboard
+		if (event.key === "Enter") {
+			// Cancel the default action, if needed
+			event.preventDefault();
+			// Trigger the button element with a click
+			document.getElementById("key").click();
+		}
+		});
+		var id2 = null;
+		function engine() {
+            clearText();
+
+			document.getElementById("searchbar").classList.add("glowAllTheTime");
+
+            gap = 2000
+			setTimeout(generateResearch,gap,1);
+			setTimeout(generateResearch,gap*2,2);
+            setTimeout(generateResearch,gap*3,3);
+
+			clearInterval(id2);
+			id2 = setTimeout(answere, gap*4);
+		}
+
+		function generateResearch(num){
+			var jokes = [
+				'milf.com, per un amico eh',
+				'UFO avvistato ad Acerra',
+				'il vero Babbonatale avvistato nei quartieri spagnoli con una Peroni in mano',
+				'quello che hai scritto tu',
+				'quanto fa 6+2',
+				'nel Dark Web: "come si usa Google"',
+				'battute sessiste su Hitler',
+				'come costruire un modellino di Auschwitz con i Lego',
+				'sto cazzo',
+				'battute noiose sui napoletani',
+				'un attimo una cosa, poi cerco tutte le stronzate che vuoi tu',
+                'computer maturi a 5 km da me',
+                'cosa sono le emozioni',
+				'Lavezziz',
+
+			];
+            document.getElementById("toMove" + num.toString()).innerHTML = "&#10004; Cercando: " + jokes[Math.floor(Math.random()*jokes.length)] + "...";
+            move("toMove" + num.toString());
+		}
+
+        function clearText(){
+            document.getElementById("toMove1").innerHTML = '';
+			document.getElementById("toMove2").innerHTML = '';
+            document.getElementById("toMove3").innerHTML = '';
+			document.getElementById("ans").innerHTML = '';
+        }
+		
+		//######################################################### random answere
+		function answere(){
+			var ans = [
+				'è falso',
+				'che forse probabilmente è possibile',
+				'ca si nu strunz',
+				'non sono sicuro della risposta, cerca su google',
+				'no',
+				'forse',
+				'questo chiedilo a tua madre',
+				'spiacente, ora non posso, mamma mi ha chiamato a tavola',
+				'il 1956 viene prima del 1957? A. B. o falso.?',
+                'Victor Osimhen'
+			];
+			var elem = "La risposta calcolata è: " + ans[Math.floor(Math.random()*ans.length)];
+			var text = document.getElementById("ans").innerHTML;
+			text = elem;
+
+			//#######################	animation letter-by-letter
+
+			//var text = $('#ans').text();
+			var length = text.length;
+			var timeOut;
+			var character = 0;
+
+			(function typeWriter() { 
+				timeOut = setTimeout(function() {
+					character++;
+					var type = text.substring(0, character);
+					$('#ans').text(type);
+					typeWriter();
+					
+					if (character == length) {
+						clearTimeout(timeOut);
+					}
+					
+				}, 50);
+			}());
+			document.getElementById("searchbar").classList.remove("glowAllTheTime");
+
+		}
+		
+
+
+
+
+
+
+		/*
+		TO DO:
+			-favicon: maybe cervello con pastello conficcato di homer
+			
+		*/
+
+		
+	</script>
+
+</body>
+</html>
