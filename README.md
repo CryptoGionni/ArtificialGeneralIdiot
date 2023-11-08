@@ -1,1 +1,1 @@
-# AS
+# AGI: Artificial General Idiot
